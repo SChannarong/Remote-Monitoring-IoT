@@ -1,0 +1,8 @@
+{
+  "name": "git-commit",
+  "source": "github-awesome-copilot",
+  "description": "Execute git commit with conventional commit message analysis, intelligent staging, and message generation.",
+  "description_ja": "Git Commit",
+  "categories": [],
+  "installedAt": "2026-02-12T19:23:57.227Z"
+}

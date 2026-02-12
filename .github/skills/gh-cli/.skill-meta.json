@@ -1,0 +1,9 @@
+{
+  "name": "gh-cli",
+  "source": "github-awesome-copilot",
+  "description": "GitHub CLI (gh) comprehensive reference for repositories, issues, pull requests, Actions, projects, releases, gists, codespaces, organizations, extensions, and all GitHub operations from the command l...",
+  "description_ja": "Gh Cli",
+  "whenToUse": "Comprehensive reference for GitHub CLI (gh) - work seamlessly with GitHub from the command line.",
+  "categories": [],
+  "installedAt": "2026-02-12T19:23:37.565Z"
+}

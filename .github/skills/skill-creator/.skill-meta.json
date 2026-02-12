@@ -1,0 +1,11 @@
+{
+  "name": "skill-creator",
+  "source": "composio-awesome",
+  "description": "Guide for creating effective skills.",
+  "description_ja": "Create new agent skills",
+  "whenToUse": "This skill provides guidance for creating effective skills.",
+  "categories": [
+    "community"
+  ],
+  "installedAt": "2026-02-12T19:25:48.574Z"
+}

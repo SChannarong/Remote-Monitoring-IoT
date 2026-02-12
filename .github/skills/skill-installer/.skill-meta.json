@@ -1,0 +1,9 @@
+{
+  "name": "skill-installer",
+  "source": "openai-skills",
+  "description": "Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path.",
+  "description_ja": "Skill Installer",
+  "whenToUse": "Helps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.co...",
+  "categories": [],
+  "installedAt": "2026-02-12T19:25:06.433Z"
+}
