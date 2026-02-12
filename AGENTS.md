@@ -9,6 +9,7 @@
 | Skill | Description |
 |-------|-------------|
 | [advanced-evaluation](.github/skills/advanced-evaluation/SKILL.md) | This skill should be used when the user asks to "implement LLM-as-judge", "compare model outputs"... \| This skill covers production-grade techniques for evaluating LLM outputs using LLMs as judges. It... |
+| [Art](.github/skills/art/SKILL.md) | Complete visual content system. \| Complete visual content system for creating illustrations, diagrams, and visual content. |
 | [canvas-design](.github/skills/canvas-design/SKILL.md) | Create beautiful visual art in .png and .pdf documents using design philosophy. |
 | [chrome-devtools](.github/skills/chrome-devtools/SKILL.md) | Expert-level browser automation, debugging, and performance analysis using Chrome DevTools MCP. \| Use this skill when:; Browser Automation: Navigating pages, clicking elements, filling forms, and h... |
 | [create-plan](.github/skills/create-plan/SKILL.md) | Create Plan \| Create Plan |
