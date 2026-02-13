@@ -3,8 +3,7 @@ import { ComponentItem } from "@/types";
 export const components: ComponentItem[] = [
     {
         id: "power-supply",
-        name: "Slim LED Power Supply",
-        headline: "The Powerhouse",
+        name: "Power Supply 12V-300W",
         specs: [
             { label: "Input", value: "100V-245Vac" },
             { label: "Output", value: "12V 25A" },
@@ -19,8 +18,7 @@ export const components: ComponentItem[] = [
     },
     {
         id: "stm32",
-        name: "STM32F411 Dev Board",
-        headline: "The Brain",
+        name: "STM32F411 Black Pill",
         specs: [
             { label: "Chip", value: "ARM Cortex-M4" },
             { label: "Speed", value: "100MHz" },
@@ -35,8 +33,7 @@ export const components: ComponentItem[] = [
     },
     {
         id: "buck-converter",
-        name: "DC-DC Buck Converter",
-        headline: "The Regulator",
+        name: "DC-DC Buck Converter Module (MH)",
         specs: [
             { label: "Model", value: "XL4015" },
             { label: "Efficiency", value: "96%" },
@@ -51,8 +48,7 @@ export const components: ComponentItem[] = [
     },
     {
         id: "mosfet-trigger",
-        name: "Dual MOSFET Switch",
-        headline: "The Muscle",
+        name: "MOSFET Power Driver Module",
         specs: [
             { label: "Voltage", value: "5V-36V" },
             { label: "Current", value: "15A (30A Max)" },
@@ -68,7 +64,6 @@ export const components: ComponentItem[] = [
     {
         id: "emi-filter",
         name: "LC / EMI Filter",
-        headline: "The Purifier",
         specs: [
             { label: "Type", value: "LC Low Pass" },
             { label: "Filtering", value: "High Frequency" },
@@ -78,23 +73,6 @@ export const components: ComponentItem[] = [
         themeColor: "#00FF00", // PCB Green
         imageSequence: {
             prefix: "/assets/lc-emi/ezgif-frame-",
-            frameCount: 127
-        }
-    },
-    {
-        id: "breadboard",
-        name: "Prototyping Breadboard",
-        headline: "The Nexus",
-        specs: [
-            { label: "Setup", value: "Solderless" },
-            { label: "Points", value: "830 Tie-points" },
-            { label: "Logic", value: "3.3V / 5V" },
-        ],
-        features: ["Jumper Wire Array", "Red LED Status", "Modular Design"],
-        themeColor: "#FFFFFF", // White
-        // Using STM32 as explicit placeholder
-        imageSequence: {
-            prefix: "/assets/stm32/ezgif-frame-",
             frameCount: 127
         }
     },

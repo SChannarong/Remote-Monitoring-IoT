@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 10, 10, 10;
-  --background-end-rgb: 18, 18, 18;
+  --deck-ink: 14 40 65;
+  --deck-paper: 232 232 232;
+  --deck-accent1: 21 96 130;
+  --deck-accent2: 233 113 50;
+  --deck-accent3: 25 107 36;
+  --deck-accent4: 15 158 213;
+  --deck-accent5: 160 43 147;
+  --deck-accent6: 78 167 46;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  overflow: hidden; /* Prevent scrolling for the full-screen dashboard feel */
+  color: rgb(var(--deck-paper));
+  background: rgb(11, 19, 32);
+  overflow: hidden;
 }
 
 /* Custom Scrollbar for Detail Panel */
@@ -38,15 +38,110 @@ body {
 }
 
 .glass-panel {
-  background: rgba(20, 20, 20, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+  background: rgba(10, 14, 22, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(232, 232, 232, 0.12);
+  box-shadow: 0 18px 60px 0 rgba(0, 0, 0, 0.45);
 }
 
 .sidebar-glass {
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(8, 12, 20, 0.85);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(232, 232, 232, 0.1);
+}
+
+.deck-bg {
+  background:
+    radial-gradient(900px 500px at 12% 12%, rgba(var(--deck-accent4), 0.22), transparent 60%),
+    radial-gradient(800px 450px at 88% 16%, rgba(var(--deck-accent2), 0.18), transparent 58%),
+    radial-gradient(700px 500px at 70% 80%, rgba(var(--deck-accent1), 0.18), transparent 55%),
+    linear-gradient(180deg, rgba(11, 19, 32, 0.98), rgba(6, 10, 18, 0.98));
+}
+
+.deck-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 3px 3px;
+  opacity: 0.18;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+.deck-grid {
+  background-image:
+    linear-gradient(rgba(232, 232, 232, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 232, 232, 0.06) 1px, transparent 1px);
+  background-size: 90px 90px;
+}
+
+.deck-card {
+  background: rgba(9, 14, 23, 0.7);
+  border: 1px solid rgba(232, 232, 232, 0.14);
+  box-shadow: 0 24px 80px rgba(3, 6, 10, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.deck-panel {
+  background: linear-gradient(180deg, rgba(248, 249, 252, 0.98), rgba(236, 239, 244, 0.96));
+  border-left: 1px solid rgba(14, 40, 65, 0.2);
+  box-shadow: -20px 0 60px rgba(7, 12, 20, 0.45);
+}
+
+.diagram {
+  font-size: 12px;
+}
+
+.diagram-node {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  background: rgba(8, 8, 8, 0.9);
+  padding: 10px 14px;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.diagram-node--sm {
+  padding: 10px 14px;
+}
+
+.diagram-node--lg {
+  font-size: 20px;
+  padding: 14px 18px;
+}
+
+.diagram-line {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.diagram-arrow-right::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: -4px;
+  border-left: 6px solid rgba(255, 255, 255, 0.8);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.diagram-arrow-up::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: -6px;
+  border-bottom: 6px solid rgba(255, 255, 255, 0.8);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+
+.diagram-label {
+  position: absolute;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
 }

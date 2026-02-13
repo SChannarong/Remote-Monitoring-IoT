@@ -16,6 +16,7 @@ export default function ImageSequencer({ prefix, count, alt, isExiting, onExitCo
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const imagesRef = useRef<HTMLImageElement[]>([]);
+    const exitSignaledRef = useRef(false);
     const [loadedCount, setLoadedCount] = useState(0);
     const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
 
@@ -28,6 +29,7 @@ export default function ImageSequencer({ prefix, count, alt, isExiting, onExitCo
         let isMounted = true;
         const loadImages = async () => {
             setLoadedCount(0);
+            exitSignaledRef.current = false;
             imagesRef.current = [];
             const promises: Promise<void>[] = [];
 
@@ -57,6 +59,12 @@ export default function ImageSequencer({ prefix, count, alt, isExiting, onExitCo
         loadImages();
         return () => { isMounted = false; };
     }, [prefix, count]);
+
+    useEffect(() => {
+        if (!isExiting) {
+            exitSignaledRef.current = false;
+        }
+    }, [isExiting]);
 
     // Track container size for full-screen rendering
     useEffect(() => {
@@ -151,7 +159,10 @@ export default function ImageSequencer({ prefix, count, alt, isExiting, onExitCo
             if (isExiting && nextFrame <= 0) {
                 nextFrame = 0;
                 frameIndex.set(0);
-                if (onExitComplete) onExitComplete();
+                if (!exitSignaledRef.current) {
+                    exitSignaledRef.current = true;
+                    if (onExitComplete) onExitComplete();
+                }
                 return;
             }
 
@@ -169,6 +180,18 @@ export default function ImageSequencer({ prefix, count, alt, isExiting, onExitCo
         return () => cancelAnimationFrame(animationFrameId);
     }, [loadedCount, count, frameIndex, isExiting, onExitComplete, prefix]);
 
+    useEffect(() => {
+        if (!isExiting || loadedCount === count) return;
+        if (exitSignaledRef.current) return;
+        const timeoutId = window.setTimeout(() => {
+            if (exitSignaledRef.current) return;
+            exitSignaledRef.current = true;
+            if (onExitComplete) onExitComplete();
+        }, 200);
+
+        return () => window.clearTimeout(timeoutId);
+    }, [isExiting, loadedCount, count, onExitComplete]);
+
     // Drag handler
     const handleDrag = (_: any, info: any) => {
         // 1px drag = 0.5 frame movement
@@ -185,8 +208,8 @@ export default function ImageSequencer({ prefix, count, alt, isExiting, onExitCo
         <div ref={containerRef} className="relative w-full h-full cursor-grab active:cursor-grabbing flex items-center justify-center select-none overflow-hidden">
             {loadedCount < count ? (
                 <div className="flex flex-col items-center gap-4">
-                    <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/20 border-t-white" />
-                    <p className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                    <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-white" />
+                    <p className="text-sm font-semibold uppercase tracking-[0.35em] text-white/60">
                         Loading Assets... {Math.round((loadedCount / count) * 100)}%
                     </p>
                 </div>
@@ -214,9 +237,9 @@ export default function ImageSequencer({ prefix, count, alt, isExiting, onExitCo
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none bg-black/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/10"
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none bg-black/30 backdrop-blur-md px-3 py-1 rounded-full border border-white/15"
             >
-                <p className="text-[10px] font-bold uppercase tracking-widest text-white/50">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-white/50">
                     Drag to Rotate
                 </p>
             </motion.div>
