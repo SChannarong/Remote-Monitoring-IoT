@@ -4,6 +4,7 @@ export const components: ComponentItem[] = [
     {
         id: "power-supply",
         name: "Power Supply 12V-300W",
+        headline: "Primary Power Source",
         specs: [
             { label: "Input", value: "100V-245Vac" },
             { label: "Output", value: "12V 25A" },
@@ -19,6 +20,7 @@ export const components: ComponentItem[] = [
     {
         id: "stm32",
         name: "STM32F411 Black Pill",
+        headline: "Control Core",
         specs: [
             { label: "Chip", value: "ARM Cortex-M4" },
             { label: "Speed", value: "100MHz" },
@@ -34,6 +36,7 @@ export const components: ComponentItem[] = [
     {
         id: "buck-converter",
         name: "DC-DC Buck Converter Module (MH)",
+        headline: "Voltage Regulator",
         specs: [
             { label: "Model", value: "XL4015" },
             { label: "Efficiency", value: "96%" },
@@ -49,6 +52,7 @@ export const components: ComponentItem[] = [
     {
         id: "mosfet-trigger",
         name: "MOSFET Power Driver Module",
+        headline: "PWM Power Stage",
         specs: [
             { label: "Voltage", value: "5V-36V" },
             { label: "Current", value: "15A (30A Max)" },
@@ -64,6 +68,7 @@ export const components: ComponentItem[] = [
     {
         id: "emi-filter",
         name: "LC / EMI Filter",
+        headline: "Noise Suppression",
         specs: [
             { label: "Type", value: "LC Low Pass" },
             { label: "Filtering", value: "High Frequency" },
